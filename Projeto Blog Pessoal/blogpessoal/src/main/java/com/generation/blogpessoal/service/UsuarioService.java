@@ -97,6 +97,4 @@ public class UsuarioService {
 		return "Basic " + new String(tokenBase64); /* Pega a String criada na linha de cima e faça a junção
 		 											* com 'Basic' para montar o token básico por completo. */
 	}
-
-	
 }
