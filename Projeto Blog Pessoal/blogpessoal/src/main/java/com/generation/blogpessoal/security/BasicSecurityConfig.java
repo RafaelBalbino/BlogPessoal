@@ -21,20 +21,20 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailsService userDetailsService;
 	
-	/* Usuário em memória para teste. Checa no banco de dados, não acha 
+	/* Usuário em memória para teste - Checa no banco de dados, não acha 
 	 * aí tem a exceção em baixo (Um usuário para testar a API mais rápido), sem 
 	 * validação de token pra agilizar testes no processo de desenvolvimento. */
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication()
-		.withUser("root") // Checa se o usuário é root, aí pula pra senha
-		.password(passwordEncoder().encode("root")) /* Checa se a senha é root e encripta elas
+		.withUser("root") // Checa se o usuário é 'root', aí pula pra checagem da senha
+		.password(passwordEncoder().encode("root")) /* Checa se a senha é 'root' e encripta ela
 													 * também gerando um token. */
 		                                            /* Precisa de uma dependência, que já está 
-		                                             * no pom.xml (SpringBoot Starter Security) */
-		.authorities("ROLE_USER"); /* Valida que é um usuário, necessário para saber que 
-								  * tipo de usuário que é. Se não tiver, não terá permissões 
-								  * de CRUD de um usuário normal e válido */
+		                                             * no pom.xml (Spring Boot Starter Security) */
+		.authorities("ROLE_USER"); /* Valida que é um usuário. Necessário para saber que tipo
+								  * de usuário que é também. Se não tiver, não terá permissões 
+								  * de CRUD de um usuário normal e válido. */
 	}
 	
 	// Notação que deixa uma função acessível globalmente (Em toda a aplicação)
@@ -63,9 +63,9 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 		.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) 
 		/* ^ Define que toda requisição tem começo, meio e fim. Uma por vez e ajuda a prevenir ataques 
 		 * cibernéticos e invasões com várias requisições de uma forma | Tipo quando expira o token 
-		 * em um site como na plataforma da Generation Brasil. */
-		.and().cors() /* Funciona como o '@CrossOrigins', vendo de qual porta está vindo a requisição e
-		liberando acesso para todas (Do Front-end pro Back-end basicamente) */
-		.and().csrf().disable(); // Autoriza PUT e DELETE na requisição
+		 * em um site como na plataforma da Generation Brasil. ^ */
+		.and().cors() /* <-- Funciona como o '@CrossOrigins', vendo de qual porta está vindo a requisição
+		               * e liberando acesso para todas (Do Front-end pro Back-end) basicamente. */
+		.and().csrf().disable(); // Autoriza PUT e DELETE nas requisições.
 	}
 }

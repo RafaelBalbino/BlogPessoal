@@ -24,7 +24,7 @@ public class UserDetailsImpl implements UserDetails {
 		this.password = usuario.getSenha();
 	}
 	
-	// Define que todos os usuário terão o mesmo nível de privilégio/acesso (CRUD)
+	// Define que todos os usuários terão o mesmo nível de privilégio/acesso (CRUD)
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return authorities;
