@@ -22,7 +22,7 @@ public class UsuarioService {
 	/* Lembra de colocar um 'return' após 'if' ou será necessário um 
 	 * ';' depois de '.isPresent())', pois o Java acha que o primeiro 
 	 * 'return' é considerado o da função. */
-	public Optional cadastraUsuario(Usuario usuario) {
+	public Optional <Usuario> cadastraUsuario(Usuario usuario) {
 		
 		// Checa se o usuário já existe no banco de dados antes de fazer o cadastro 
 		if (repository.findByUsuario(usuario.getUsuario()).isPresent())
@@ -68,7 +68,7 @@ public class UsuarioService {
 				 * atributos, como foto */
 				// Por isso que dá uma travada quando logamos em alguma rede social como Facebook ou Instagram
 				
-				return usuarioLogin;
+				return usuarioLogin; // Aí retorna o objeto completo com todas as informações
 			}
 		}
 		return Optional.empty(); /* Retorna uma das opções do Optional, que é 'vazio'. Não existe dentro do 'List'

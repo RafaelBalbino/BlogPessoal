@@ -32,8 +32,8 @@ public class Usuario {
 		private String usuario;
 		
 		@NotBlank
-		@Size(min = 8, max = 16, message = "A senha deve conter de 8 até 16 caracteres")
-		private String senha;
+		@Size(min = 4, max = 100, message = "No mínimo 4 caracteres, por favor.")
+		private String senha; // Não coloque caracteres especiais para não dar erro 
 		
 		private String foto;
 		

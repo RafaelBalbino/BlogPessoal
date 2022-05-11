@@ -26,6 +26,9 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 	 * validação de token pra agilizar testes no processo de desenvolvimento. */
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(userDetailsService); // Usa a superclasse 'userDetailsService'
+		// Sem ela você não consegue cadastrar nenhum usuário, só vai dar pra usar o que tá em memória
+		
 		auth.inMemoryAuthentication()
 		.withUser("root") // Checa se o usuário é 'root', aí pula pra checagem da senha
 		.password(passwordEncoder().encode("root")) /* Checa se a senha é 'root' e encripta ela
@@ -52,8 +55,8 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		http.authorizeRequests()
-		.antMatchers("/usuarios/logar").permitAll() // De qualquer lugar, você terá acesso a login
-		.antMatchers("/usuarios/cadastrar").permitAll() // e cadastro já que as rotas estão abertas
+		.antMatchers("/usuario/logar").permitAll() // De qualquer lugar, você terá acesso a login
+		.antMatchers("/usuario/cadastrar").permitAll() // e cadastro já que as rotas estão abertas
 		.antMatchers(HttpMethod.OPTIONS).permitAll() /* Permite que as rotas estejam acessíveis com GET
 		 											  * Permite saber quais métodos estão abertos na
 		 											  * documentação da API e que estão abertos nela 
