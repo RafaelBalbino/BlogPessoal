@@ -38,6 +38,12 @@ public class UsuarioService {
 		return Optional.of(repository.save(usuario));
 	}
 	
+	public Optional<Usuario>alterarUsuario(Usuario usuario){
+		repository.findById(usuario.getId()).isPresent();
+		usuario.setSenha(criptografarSenha(usuario.getSenha()));
+		return Optional.of(repository.save(usuario));
+	}
+	
 	// Função que encriptografa a senha antes do cadastro ser completado
 	private String criptografarSenha(String senha) {
 		
