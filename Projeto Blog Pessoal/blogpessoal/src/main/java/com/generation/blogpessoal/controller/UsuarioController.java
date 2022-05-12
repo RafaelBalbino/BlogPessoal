@@ -58,10 +58,15 @@ public class UsuarioController {
 
 	}
 	
-	@PutMapping
-	public ResponseEntity <Usuario> put(@Valid @RequestBody Usuario usuario) {
-		return ResponseEntity.status(HttpStatus.OK).body(usuarioRepository.save(usuario));
+	@PutMapping("/atualizar")
+	public ResponseEntity<Usuario> putUsuario(@Valid @RequestBody Usuario usuario) {
+
+		return usuarioService.atualizarUsuario(usuario)
+				.map(resposta -> ResponseEntity.status(HttpStatus.CREATED).body(resposta))
+				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
+
 	}
+
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id) {
