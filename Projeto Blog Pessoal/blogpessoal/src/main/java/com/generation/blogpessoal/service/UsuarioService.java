@@ -107,7 +107,7 @@ public class UsuarioService {
 
 		String token = usuario + ":" + senha; // Como o token deve ser montado 
 		byte[] tokenBase64 = Base64.encodeBase64(token.getBytes(Charset.forName("US-ASCII")));
-		// Mapeia o que você digitar, converte para binário(ASCII) aí encripta para Base64 
+		// Mapeia o que você digitar, converte para binário(ASCII) aí encripta para Base64
 		// 'import org.apache.commons.codec.binary.Base64; ' <- Este é o import correto,
 		// Depois 'import java.nio.charset.Charset'
 		
