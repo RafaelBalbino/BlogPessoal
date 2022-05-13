@@ -38,13 +38,30 @@ public class UsuarioService {
 		return Optional.of(repository.save(usuario));
 	}
 	
+	public Optional <Usuario> atualizarUsuario(Usuario usuario) {
+		
+		// Checa se o id já existe no banco de dados antes de fazer a atualização 
+		if (repository.findById(usuario.getId()).isPresent()) {
+			/* Senão criptografar de novo, vai mandar ela sem a criptografia aí
+			 * vai dar erro por que o sistema não entende, não estará no padrão 
+			 * necessário. */
+			usuario.setSenha(criptografarSenha(usuario.getSenha()));
+			
+			// Aí salva a senha criptografada
+			return Optional.of(repository.save(usuario));
+		}
+			
+		return Optional.empty();	
+		// Salva o usuário com senha já criptografada no banco de dados pelo 'repository'
+	}
+
 	// Função que encriptografa a senha antes do cadastro ser completado
 	private String criptografarSenha(String senha) {
 		
 		// Responsável por encriptografar a senha
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		
-		// Retorna a senha criptografada
+		// Função que retorna a senha criptografada, com o parâmetro 'senha' e função 'encode'
 		return encoder.encode(senha);
 	}
 	
