@@ -29,7 +29,6 @@ import com.generation.blogpessoal.service.UsuarioService;
  * A opção MethodOrderer.OrderAnnotaion.class indica 
  * que os testes serão executados na ordem indicada 
  * pela anotação @Order inserida em cada teste. */
-
 public class UsuarioControllerTest {
 	
 	@Autowired
