@@ -82,7 +82,7 @@ public class UsuarioControllerTest {
 				     "xanimani@gmail.com", "rafitcha", "https://i.imgur.com/FETvs2O.jpg");
 		
 		HttpEntity <Usuario> requisicao = new HttpEntity <Usuario> (usuarioUpdate);
-		
+	
 		ResponseEntity <Usuario> resposta = testRestTemplate
 				.withBasicAuth("root", "root")
 				.exchange("/usuario/atualizar", HttpMethod.PUT, requisicao, Usuario.class);

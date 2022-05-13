@@ -1,3 +1,4 @@
+
 package com.generation.blogpessoal.repository;
 
 import java.util.List;
@@ -15,6 +16,4 @@ public interface UsuarioRepository extends JpaRepository <Usuario, Long> {
 	public Optional <Usuario> findByUsuario(String usuario);
 
 	public List<Usuario> findAllByNomeContainingIgnoreCase(String nome);
-
 }
-
