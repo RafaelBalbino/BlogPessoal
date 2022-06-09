@@ -55,8 +55,11 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		http.authorizeRequests()
+		.antMatchers("/**").permitAll()
 		.antMatchers("/usuario/logar").permitAll() // De qualquer lugar, você terá acesso a login
 		.antMatchers("/usuario/cadastrar").permitAll() // e cadastro já que as rotas estão abertas
+		.antMatchers(HttpMethod.GET ,"/postagem").permitAll()
+		.antMatchers(HttpMethod.GET ,"/tema").permitAll()
 		.antMatchers(HttpMethod.OPTIONS).permitAll() /* Permite que as rotas estejam acessíveis com GET
 		 											  * Permite saber quais métodos estão abertos na
 		 											  * documentação da API e que estão abertos nela 

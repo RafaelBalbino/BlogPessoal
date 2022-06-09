@@ -76,6 +76,7 @@ public class UsuarioService {
 				usuarioLogin.get().setId(usuario.get().getId()); /* O .get() é para pegar os atributos relevantes do banco */
 				usuarioLogin.get().setNome(usuario.get().getNome());             /* de dados para alimentar 'usuarioLogin' */
 				usuarioLogin.get().setFoto(usuario.get().getFoto());
+				usuarioLogin.get().setTipo(usuario.get().getTipo());
 				usuarioLogin.get().setToken(gerarBasicToken(usuarioLogin.get().getUsuario(), usuarioLogin.get().getSenha()));
 				usuarioLogin.get().setSenha(usuario.get().getSenha());
 				/* Inserimos no 'usuarioLogin' e tudo isso é comparado ao que já foi cadastrado em 'usuario', passando o que 

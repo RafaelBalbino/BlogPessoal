@@ -39,10 +39,10 @@ public class UsuarioRepositoryTest {
 		// 'nome' do usuário
 		// 'usuario(e-mail)' do usuário
 		// 'foto' genérica do usuário
-		repository.save(new Usuario(0L, "Maiar da Silva", "isadora@gmail.com", "51 e pega", "https://i.imgur.com/FETvs2O.jpg"));
-		repository.save(new Usuario(0L, "Michael da Silva", "michaeltrimundial@gmail.com", "nunca foi rebaixado", "https://i.imgur.com/FETvs2O.jpg"));
-		repository.save(new Usuario(0L, "Brocco da Silva", "brocco@gmail.com", "broccolis", "https://i.imgur.com/FETvs2O.jpg"));
-		repository.save(new Usuario(0L, "Mayara dos Santos", "will31smith@gmail.com", "cenourinha", "https://i.imgur.com/FETvs2O.jpg"));
+		repository.save(new Usuario(0L, "Maiar da Silva", "isadora@gmail.com", "51 e pega", "https://i.imgur.com/FETvs2O.jpg", "Normal"));
+		repository.save(new Usuario(0L, "Michael da Silva", "michaeltrimundial@gmail.com", "nunca foi rebaixado", "https://i.imgur.com/FETvs2O.jpg", "Normal"));
+		repository.save(new Usuario(0L, "Brocco da Silva", "brocco@gmail.com", "broccolis", "https://i.imgur.com/FETvs2O.jpg", "Normal"));
+		repository.save(new Usuario(0L, "Mayara dos Santos", "will31smith@gmail.com", "cenourinha", "https://i.imgur.com/FETvs2O.jpg", "Normal"));
 	}
 	
 	@Test // Diz ao Spring que essa é uma função para testes

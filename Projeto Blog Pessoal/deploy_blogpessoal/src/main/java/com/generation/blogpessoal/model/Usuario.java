@@ -40,6 +40,8 @@ public class Usuario {
 		
 		private String foto;
 		
+		private String tipo;
+		
 		@OneToMany (mappedBy = "usuario", cascade = CascadeType.ALL)
 		@JsonIgnoreProperties ("usuario")
 		private List <Postagem> postagem;
@@ -47,12 +49,13 @@ public class Usuario {
 		// MÉTODOS CONSTRUTORES PARA TESTES
 		// Importante seguir a mesma ordem das declarações dos atributos de usuario acima 
 		// Construtor cheio onde teremos que inserir todos os atributos para testar
-		public Usuario(Long id, String nome, String usuario, String senha, String foto) {
+		public Usuario(Long id, String nome, String usuario, String senha, String foto, String tipo) {
 			this.id = id;
 			this.nome = nome;
 			this.usuario = usuario;
 			this.senha = senha;
 			this.foto = foto;
+			this.tipo = tipo;
 		}
 		
 		//construtor vazio para inserirmos que for necessário
@@ -96,6 +99,14 @@ public class Usuario {
 
 		public void setFoto(String foto) {
 			this.foto = foto;
+		}
+
+		public String getTipo() {
+			return tipo;
+		}
+
+		public void setTipo(String tipo) {
+			this.tipo = tipo;
 		}
 
 		public List<Postagem> getPostagem() {
