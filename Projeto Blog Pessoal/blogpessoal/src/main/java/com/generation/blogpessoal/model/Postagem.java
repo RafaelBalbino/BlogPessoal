@@ -24,11 +24,11 @@ public class Postagem {
 	private Long id;
 
 	@NotNull
-	@Size (min = 5 , max = 100, message = "O título tem no mínimo 5 caractéres e no máximo 100.")
+	@Size (min = 1 , max = 100, message = "O título tem no mínimo 1 caractér e no máximo 100.")
 	private String titulo;
 	
 	@NotNull
-	@Size (min = 10 , max = 500, message = "O texto tem no mínimo 10 caractéres e no máximo 500.")
+	@Size (min = 1 , max = 500, message = "O texto tem no mínimo 1 caractér e no máximo 500.")
 	private String texto;
 	
 	@Temporal (TemporalType.TIMESTAMP)
